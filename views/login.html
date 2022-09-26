@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="row justify-content-center">
+        <div class="col-md-5 pt-5">
+            <form id="form" action="/login" method="POST">
+                <!-- Email input -->
+                <input type="hidden" name="csrf" value="{{ .csrf }}">
+                <div class="form-outline mb-4">
+                    <input type="email" id="form2Example1" class="form-control" name="email" />
+                    <label class="form-label" for="form2Example1">Email address</label>
+                </div>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    <input type="password" id="form2Example2" class="form-control" name="password" />
+                    <label class="form-label" for="form2Example2">Password</label>
+                </div>
+
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+                <!-- Register buttons -->
+                <div class="text-center">
+                    <p>Not a member? <a href="/register">Register</a></p>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script type="text/javascript">
+        // JS code here ...
+        $(function () {
+            $('form').on('submit', function (e) {
+                e.preventDefault()
+
+                var self = $(this)
+
+                var formData = {
+                    name: self.find('[name="email"]').val(),
+                    password: self.find('[name="password"]').val(),
+                }
+
+                var url = self.attr('action')
+                var method = self.attr('method')
+                var payload = JSON.stringify(formData)
+
+                $.ajax({
+                    url: url,
+                    type: method,
+                    contentType: 'application/json',
+                    data: payload,
+                    beforeSend: function (req) {
+                        var csrfToken = self.find('[name=csrf]').val()
+                        req.setRequestHeader("X-CSRF-Token", csrfToken)
+                    },
+                }).then(function (res) {
+                    alert(res)
+                }).catch(function (err) {
+                    alert('ERROR: ' + err.responseText)
+                    console.log('err', err)
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>
