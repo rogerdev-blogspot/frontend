@@ -64,15 +64,17 @@ func (ac *AuthController) Register() echo.HandlerFunc {
 
 		data := make(map[string]interface{})
 		if err := c.Bind(&data); err != nil {
-			return c.JSON(http.StatusBadRequest, "failed register")
+			return c.Redirect(400, "/register")
 		}
 		json_data, err := json.Marshal(&data)
 		var client = &http.Client{}
 		baseURL := ac.config.UserService.Url
-		request, err := http.NewRequest("POST", baseURL+"register", bytes.NewBuffer(json_data))
+		request, err := http.NewRequest("POST", baseURL+"/register", bytes.NewBuffer(json_data))
 		fmt.Println(baseURL)
 		if err != nil {
-			return c.JSON(http.StatusBadRequest, "failed register")
+			// return c.JSON(http.StatusBadRequest, "failed register")
+			return c.Redirect(400, "/register")
+
 		}
 		request.Header.Set("Content-Type", "application/json")
 
@@ -80,12 +82,16 @@ func (ac *AuthController) Register() echo.HandlerFunc {
 
 		res, err2 := client.Do(request)
 		if err2 != nil {
-			return c.JSON(http.StatusBadRequest, "failed register")
+			// return c.JSON(http.StatusBadRequest, "failed register")
+			return c.Redirect(400, "/register")
+
 		}
 
 		defer res.Body.Close()
 
-		message := fmt.Sprintf("hello %s", data["name"])
-		return c.JSON(http.StatusOK, message)
+		// message := fmt.Sprintf("hello %s", data["name"])
+		// return c.JSON(http.StatusOK, message)
+
+		return c.Redirect(200, "/login")
 	}
 }
