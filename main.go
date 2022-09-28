@@ -47,7 +47,7 @@ func main() {
 	)
 	fmt.Println(config.Port)
 	// log.Fatal(e.Start(fmt.Sprintf(":%d", config.Port)))
-	log.Fatal(e.Start(fmt.Sprintf(":8088")))
+	log.Fatal(e.Start(fmt.Sprintf(":%v", config.Port)))
 
 }
 
