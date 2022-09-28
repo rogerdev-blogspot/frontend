@@ -7,7 +7,10 @@ import (
 	"io"
 	"log"
 
+	_authController "frontend/delivery/controllers/auth"
+	_postController "frontend/delivery/controllers/post"
 	_userController "frontend/delivery/controllers/user"
+
 	route "frontend/delivery/routes"
 
 	"github.com/labstack/echo/v4"
@@ -25,6 +28,8 @@ func main() {
 	//CONTROLLER
 	// authController := _authController.New(authRepo)
 	userController := _userController.New(config)
+	authController := _authController.New(config)
+	postController := _postController.New(config)
 
 	e := echo.New()
 	e.Static("/", "assets")
@@ -37,7 +42,8 @@ func main() {
 
 	route.RegisterPath(e,
 		userController,
-		// authController,
+		authController,
+		postController,
 	)
 	fmt.Println(config.Port)
 	// log.Fatal(e.Start(fmt.Sprintf(":%d", config.Port)))

@@ -5,7 +5,7 @@ kind: Deployment
 
 metadata:
 
-      name: go-app-deployment
+      name: rogerdev-blogspot-frontend-deployment
 
 spec:
 
@@ -15,7 +15,7 @@ spec:
 
     matchLabels:
 
-      app: go-app
+      app: rogerdev-blogspot-frontend
 
   strategy:
 
@@ -27,25 +27,25 @@ spec:
 
       labels:
 
-        app: go-app
+        app: rogerdev-blogspot-frontend
 
     spec:
 
       containers:
 
-      - name: go-app
+      - name: rogerdev-blogspot-frontend
 
-        image: mawan1122/kube-zodiakapp:v6
+        image: mawan1122/rogerdev-blogspot-frontend:latest
 
         envFrom:
 
           - secretRef:
 
-              name: mysql-secret
+              name: rogerdev-blogspot-frontend-secret
 
         ports:
 
-           - containerPort: 8081
+           - containerPort: 8082
 ---
 
 apiVersion: v1
@@ -54,19 +54,19 @@ kind: Service
 
 metadata:
 
-  name: go-app-service
+  name: rogerdev-blogspot-frontend-service
 
 spec:
 
   selector:
 
-    app: go-app
+    app: rogerdev-blogspot-frontend
 
   ports:
 
-    - port: 8080
+    - port: 8083
 
-      targetPort: 8081
+      targetPort: 8082
  
 ---
 
@@ -76,7 +76,7 @@ kind: Ingress
 
 metadata:
 
-  name: example-ingress
+  name: rogerdev-blogspot-frontend-ingress
 
   annotations:
 
@@ -99,8 +99,8 @@ spec:
 
               service:
 
-                name: go-app-service
+                name: rogerdev-blogspot-frontend-service
                 port:
 
-                  number: 8080
+                  number: 8083
           

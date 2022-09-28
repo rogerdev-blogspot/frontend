@@ -1,160 +1,24 @@
-body{
-    margin: 0;
-    padding: 0;
-}
-.test{
-    color:red;
-}
 
-.teks9 {
-    color: #92a5de;
-      background: red;
-      text-shadow:0px 0px 0 rgb(137,156,213),1px 1px 0 rgb(129,148,205),2px 2px 0 rgb(120,139,196),3px 3px 0 rgb(111,130,187),4px 4px 0 rgb(103,122,179),5px 5px 0 rgb(94,113,170),6px 6px 0 rgb(85,104,161),7px 7px 0 rgb(76,95,152),8px 8px 0 rgb(68,87,144),9px 9px 0 rgb(59,78,135),10px 10px 0 rgb(50,69,126),11px 11px 0 rgb(42,61,118),12px 12px 0 rgb(33,52,109),13px 13px 0 rgb(24,43,100),14px 14px 0 rgb(15,34,91),15px 15px 0 rgb(7,26,83),16px 16px 0 rgb(-2,17,74),17px 17px 0 rgb(-11,8,65),18px 18px 0 rgb(-19,0,57),19px 19px 0 rgb(-28,-9,48), 20px 20px 0 rgb(-37,-18,39),21px 21px 20px rgba(0,0,0,1),21px 21px 1px rgba(0,0,0,0.5),0px 0px 20px rgba(0,0,0,.2);
-}
-.greatvibes{
-    font-size: 6vw;
-    font-family: 'Great Vibes', cursive;
-}
-.greatvibessmall{
-    font-size: 3vw !important;
-    font-family: 'Great Vibes', cursive !important;
-    
+  
+  .form-signin .form-floating:focus-within {
+    z-index: 2;
+  }
+  
+  
+  .form-signin input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 
-}
-.imground{
-    width: 100% !important;
-    /* height: 100%; */
-    background-color: salmon;
-    padding: 0 !important;
-    text-align: center;
-    /* line-height: 300px; */
-    overflow: hidden;
-    /* border-radius:150px; */
-}
-.imground a img{
-    width: 100%;
-   
-}
-.name{
-    text-shadow: 0 0 3px #faf3b2;
-}
-.divide{
-    border-top: 3px solid #d5ac09;
-        display:block;
-    width: 20% !important;
+  .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  
+  .form-signin input[type="password"] {
     margin-bottom: 10px;
-}
-.full-height {
-    min-height: 100% !important;
-    background-color: yellow;
-    position: relative;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
-.centerundangan{
-    font-size: 6vw;
-    font-family: 'Great Vibes', cursive;
-}
-
-@media (max-width: 767.98px) {
-    .greatvibes{
-        font-size: 8vw;
-        font-family: 'Great Vibes', cursive;
-    }
-    .greatvibessmall{
-        font-size: 4vw !important;
-        font-family: 'Great Vibes', cursive !important;
-    }
-    .centerundangan{
-        font-size: 7vw;
-        font-family: 'Great Vibes', cursive;
-    }
-    .maps{
-        margin: 0 10% 0 10% !important;
-    }
-    .divide{
-        border-top: 3px solid #d5ac09;
-            display:block;
-        width: 30% !important;
-        margin-bottom: 10px;
-    }
-
-    #imgkananatas{
-        width: 50% !important;
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-    #imgkananbawah{
-        width: 50% !important;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-    }
-    #imgkiriatas{
-        width: 50% !important;
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
-    #imgkiribawah{
-        width: 50% !important;
-        position: absolute;
-        right: 0;
-        bottom: 0;
-    }
-  }
-#imgkananatas{
-    width: 25%;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-#imgkananbawah{
-    width: 25%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
-#imgkiriatas{
-    width: 25%;
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-#imgkiribawah{
-    width: 25%;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-}
-
-/* .rounded{
-    width: 300px;
-    height: 300px;
-    background-color: salmon;
-    
-    text-align: center;
-    line-height: 300px;
-    overflow: hidden;
-    border-radius:50%;
-}
-.rounded img{
-    width: 100%;
-    size: ;
-} */
-
-/* html, body {
-    height: 100%;
-    margin: 0;
-  }
-  
-  .full-height {
-    height: 100%;
-    background: yellow;
-  }
-  </style>
-  
-  </head>
-  <body>
-  
-  <div class="full-height">I am a DIV that will stretch to fit the whole width and height of the browser window!</div>
-   */

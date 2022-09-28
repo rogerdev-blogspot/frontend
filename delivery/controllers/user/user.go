@@ -3,7 +3,6 @@ package user
 import (
 	// "frontend/delivery/controllers/common"
 
-	"fmt"
 	"frontend/configs"
 	"html/template"
 	"net/http"
@@ -26,33 +25,37 @@ func New(config *configs.AppConfig /*, S3 *session.Session*/) *UserController {
 	}
 }
 
-func (ac *UserController) IndexRegister() echo.HandlerFunc {
+func (ac *UserController) IndexPosts() echo.HandlerFunc {
 	return func(c echo.Context) error {
-		return c.Render(http.StatusOK, "register.html", map[string]interface{}{
-			"name": "Dolly!",
+
+		type Post struct {
+			Title       string
+			Description string
+		}
+		var post Post
+		var posts []Post
+
+		post.Title = "judul"
+		post.Description = "hellosfksdjfkdsjfds"
+		posts = append(posts, post)
+		posts = append(posts, post)
+
+		return c.Render(http.StatusOK, "posts.html", map[string]interface{}{
+			"name":    "RogerDev!",
+			"success": true,
+			"csrf":    c.Get("csrf"),
+			"posts":   posts,
 		})
 	}
 }
-func (ac *UserController) IndexLogin() echo.HandlerFunc {
+func (ac *UserController) GetPostDetail() echo.HandlerFunc {
 	return func(c echo.Context) error {
 
-		return c.Render(http.StatusOK, "login.html", map[string]interface{}{
-			"name":    "Dolly!",
+		return c.Render(http.StatusOK, "post.html", map[string]interface{}{
+			"name":    "RogerDev!",
 			"success": true,
 			"csrf":    c.Get("csrf"),
 		})
-	}
-}
-func (ac *UserController) Login() echo.HandlerFunc {
-	return func(c echo.Context) error {
-		data := make(map[string]interface{})
-		if err := c.Bind(&data); err != nil {
-			return err
-		}
-		fmt.Println(data)
-		message := fmt.Sprintf("hello %s", data["name"])
-		return c.JSON(http.StatusOK, message)
-		// return c.JSON(http.StatusOK, message)
 	}
 }
 

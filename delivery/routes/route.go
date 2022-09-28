@@ -1,6 +1,8 @@
 package route
 
 import (
+	"frontend/delivery/controllers/auth"
+	"frontend/delivery/controllers/post"
 	"frontend/delivery/controllers/user"
 
 	"github.com/labstack/echo/v4"
@@ -9,7 +11,8 @@ import (
 
 func RegisterPath(e *echo.Echo,
 	uc *user.UserController,
-	// aa *auth.AuthController,
+	ac *auth.AuthController,
+	pc *post.PostController,
 
 ) {
 	const CSRFTokenHeader = "X-CSRF-Token"
@@ -28,9 +31,13 @@ func RegisterPath(e *echo.Echo,
 	}))
 
 	//ROUTE REGISTER - LOGIN USERS
-	e.GET("/register", uc.IndexRegister())
-	e.GET("/login", uc.IndexLogin())
-	e.POST("/login", uc.Login())
+	e.GET("/register", ac.IndexRegister())
+	e.POST("/register", ac.Register())
+	e.GET("/login", ac.IndexLogin())
+	e.POST("/login", ac.Login())
+
+	e.GET("/posts", pc.IndexPosts())
+	e.GET("/posts/:id", pc.GetPostDetail())
 
 	// e.POST("users/login", aa.Login())
 

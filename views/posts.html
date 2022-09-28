@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+
+    <link href="/style.css" rel="stylesheet">
+
+    <title>RogerDev|All Posts</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <div class="container">
+            <a class="navbar-brand" href="/">RogerDev</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link  active" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="/posts">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="/categories">Categories</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a href="/login" class="nav-link "><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-4">
+
+        <h1 class="mb-5 text-center">All Posts</h1>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form action="/posts">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="search.." name="search" value="">
+                        <button class="btn btn-danger" type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <img src="https://source.unsplash.com/1200x400?Web Design" class="card-img-top" alt="Web Design">
+
+        <div class="card-body text-center">
+            <h3 class="card-title"><a href="/posts/title-coba-aja" class="text-decoration-none text-dark">title coba
+                    aja</a></h3>
+            <p>
+                <small class="text-muted">By. <a href="/posts?author=ademawan1122" class="text-decoration-none">ade
+                        mawan</a> in <a class="text-decoration-none" href="/posts?category=web-design">Web
+                        Design</a> 5 months ago
+                </small>
+            </p>
+
+            <p class="card-text">asdsadsadsadsadsaffaewfdc</p>
+
+            <a class="text-decoration-none btn btn-primary" href="/posts/title-coba-aja">Read more</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            {{range $index, $elem := .posts}}
+
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="position-absolute px-3 py-2" style="background-color: rgba(0,0,0,0.7)"><a
+                            href="/posts?category=web-programming" class="text-white text-decoration-none">Web
+                            Programming</a></div>
+
+                    <img src="https://source.unsplash.com/500x400?Web Programming" class="card-img-top"
+                        alt="Web Programming">
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{$elem.Title}}</h5>
+                        <p>
+                            <small class="text-muted">By. <a href="/posts?author=Rizki"
+                                    class="text-decoration-none">Muhamad Rizki Prayoga</a> 11 months ago
+                            </small>
+                        </p>
+                        <p class="card-text">{{$elem.Description}}</p>
+                        <a href="/posts/mawan-ganteng" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {{end}}
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="d-flex justify-content-end">
+        <nav>
+            <ul class="pagination">
+
+                <li class="page-item disabled" aria-disabled="true" aria-label="&laquo; Previous">
+                    <span class="page-link" aria-hidden="true">&lsaquo;</span>
+                </li>
+
+                <li class="page-item active" aria-current="page"><span class="page-link">1</span></li>
+                <li class="page-item"><a class="page-link" href="https://rogerdevone.000webhostapp.com?page=2">2</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="https://rogerdevone.000webhostapp.com?page=3">3</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="https://rogerdevone.000webhostapp.com?page=4">4</a>
+                </li>
+
+
+                <li class="page-item">
+                    <a class="page-link" href="https://rogerdevone.000webhostapp.com?page=2" rel="next"
+                        aria-label="Next &raquo;">&rsaquo;</a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
