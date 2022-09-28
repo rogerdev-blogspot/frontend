@@ -69,7 +69,8 @@ func (ac *AuthController) Register() echo.HandlerFunc {
 		json_data, err := json.Marshal(&data)
 		var client = &http.Client{}
 		baseURL := ac.config.UserService.Url
-		request, err := http.NewRequest("POST", baseURL, bytes.NewBuffer(json_data))
+		request, err := http.NewRequest("POST", baseURL+"register", bytes.NewBuffer(json_data))
+		fmt.Println(baseURL)
 		if err != nil {
 			return c.JSON(http.StatusBadRequest, "failed register")
 		}
