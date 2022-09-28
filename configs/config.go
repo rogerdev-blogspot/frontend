@@ -43,7 +43,7 @@ func initConfig() *AppConfig {
 
 	defaultConfig.Port = port
 	defaultConfig.UserService.Address = os.Getenv("BACKEND_ADDRESS")
-	defaultConfig.UserService.Port = os.Getenv("ROGERDEV_BLOGSPOT_BACKEND_SERVICE_PORT")
+	defaultConfig.UserService.Port = os.Getenv("ROGERDEV_BLOGSPOT_BACKEND_SERVICE_SERVICE_PORT")
 	defaultConfig.UserService.Endpoint = "/users"
 	defaultConfig.UserService.Url = "http://" + defaultConfig.UserService.Address + ":" + defaultConfig.UserService.Port + defaultConfig.UserService.Endpoint
 
