@@ -1,6 +1,7 @@
 package configs
 
 import (
+	"fmt"
 	"os"
 	"strconv"
 	"sync"
@@ -41,10 +42,12 @@ func initConfig() *AppConfig {
 	}
 
 	defaultConfig.Port = port
-	defaultConfig.UserService.Address = os.Getenv("ROGERDEV_BLOGSPOT_BACKEND_SERVICE_SERVICE_HOST")
+	defaultConfig.UserService.Address = os.Getenv("BACKEND_ADDRESS")
 	defaultConfig.UserService.Port = os.Getenv("ROGERDEV_BLOGSPOT_BACKEND_SERVICE_PORT")
-	defaultConfig.UserService.Endpoint = os.Getenv("/users")
-	defaultConfig.UserService.Url = "http://" + defaultConfig.UserService.Address + ":" + defaultConfig.UserService.Port + os.Getenv("/users")
+	defaultConfig.UserService.Endpoint = "/users"
+	defaultConfig.UserService.Url = "http://" + defaultConfig.UserService.Address + ":" + defaultConfig.UserService.Port + defaultConfig.UserService.Endpoint
+
+	fmt.Println(defaultConfig.UserService.Url)
 
 	return &defaultConfig
 }
