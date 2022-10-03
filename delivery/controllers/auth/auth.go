@@ -89,8 +89,28 @@ func (ac *AuthController) Register() echo.HandlerFunc {
 			return c.Redirect(400, "/register")
 
 		}
+		type DataResponse struct {
+			UserUid string `json:"user_uid"`
+			Name    string `json:"name"`
+			Email   string `json:"email"`
+			Address string `json:"address"`
+			Gender  string `json:"gender"`
+		}
+		type ResponseBackend struct {
+			Code    interface{}  `json:"code"`
+			Message interface{}  `json:"message"`
+			Data    DataResponse `json:"data"`
+		}
+
+		var dataRegister ResponseBackend
 
 		defer res.Body.Close()
+		err3 := json.NewDecoder(res.Body).Decode(&dataRegister)
+		if err3 != nil {
+			fmt.Println(err.Error())
+			return c.Redirect(400, "/register")
+		}
+		fmt.Println(dataRegister)
 
 		// message := fmt.Sprintf("hello %s", data["name"])
 		// return c.JSON(http.StatusOK, message)
