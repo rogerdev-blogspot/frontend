@@ -61,10 +61,14 @@ func (ac *AuthController) Login() echo.HandlerFunc {
 }
 func (ac *AuthController) Register() echo.HandlerFunc {
 	return func(c echo.Context) error {
+		message := "helloooooo"
 
 		data := make(map[string]interface{})
 		if err := c.Bind(&data); err != nil {
-			return c.Redirect(400, "/register")
+			fmt.Println(err.Error())
+
+			message += " 1"
+			return c.JSON(http.StatusOK, message)
 		}
 		json_data, err := json.Marshal(&data)
 		var client = &http.Client{}
@@ -73,9 +77,10 @@ func (ac *AuthController) Register() echo.HandlerFunc {
 		fmt.Println(baseURL)
 		if err != nil {
 			fmt.Println(err.Error())
-			// return c.JSON(http.StatusBadRequest, "failed register")
-			return c.Redirect(400, "/register")
+			message += " 2"
 
+			// return c.JSON(http.StatusBadRequest, "failed register")
+			return c.JSON(http.StatusOK, message)
 		}
 		request.Header.Set("Content-Type", "application/json")
 
@@ -84,9 +89,12 @@ func (ac *AuthController) Register() echo.HandlerFunc {
 		res, err2 := client.Do(request)
 		if err2 != nil {
 			fmt.Println(err.Error())
+			message += " 3"
 
 			// return c.JSON(http.StatusBadRequest, "failed register")
-			return c.Redirect(400, "/register")
+			// return c.Redirect(400, "/register")
+
+			return c.JSON(http.StatusOK, message)
 
 		}
 		type DataResponse struct {
@@ -108,13 +116,21 @@ func (ac *AuthController) Register() echo.HandlerFunc {
 		err3 := json.NewDecoder(res.Body).Decode(&dataRegister)
 		if err3 != nil {
 			fmt.Println(err.Error())
-			return c.Redirect(400, "/register")
+			message += " 4"
+
+			// return c.Redirect(400, "/register")
+			return c.JSON(http.StatusOK, message)
+
 		}
 		fmt.Println(dataRegister)
 
 		// message := fmt.Sprintf("hello %s", data["name"])
 		// return c.JSON(http.StatusOK, message)
 
-		return c.Redirect(200, "/login")
+		// return c.Redirect(200, "/login")
+		message += " 5 success"
+
+		return c.JSON(http.StatusOK, message)
+
 	}
 }

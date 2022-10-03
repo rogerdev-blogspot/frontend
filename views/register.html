@@ -75,7 +75,7 @@
     <div class="row justify-content-center mt-5">
         <div class="col-md-5">
             <main class="form-signin w-100 m-auto">
-                <form action="/register" method="POST" >
+                <form  id="form"  action="/register" method="POST" >
                     <input type="hidden" name="csrf" value="{{ .csrf }}">
                     <h1 class="h3 mb-3 fw-normal">REGISTRATION</h1>
                     <!-- <div class="form-floating">
@@ -115,7 +115,8 @@
     <script type="text/javascript">
         // JS code here ...
         $(function () {
-            $('form').on('submit', function (e) {
+            $('#form').on('submit', function (e) {
+                console.log("form di click")
                 e.preventDefault()
 
                 var self = $(this)
@@ -140,6 +141,9 @@
                         req.setRequestHeader("X-CSRF-Token", csrfToken)
                     },
                 }).then(function (res) {
+                    console.log("response didapat")
+                    console.log(res)
+
                     alert(res)
                 }).catch(function (err) {
                     alert('ERROR: ' + err.responseText)
