@@ -72,6 +72,7 @@ func (ac *AuthController) Register() echo.HandlerFunc {
 		request, err := http.NewRequest("POST", baseURL+"/register", bytes.NewBuffer(json_data))
 		fmt.Println(baseURL)
 		if err != nil {
+			fmt.Println(err.Error())
 			// return c.JSON(http.StatusBadRequest, "failed register")
 			return c.Redirect(400, "/register")
 
@@ -82,6 +83,8 @@ func (ac *AuthController) Register() echo.HandlerFunc {
 
 		res, err2 := client.Do(request)
 		if err2 != nil {
+			fmt.Println(err.Error())
+
 			// return c.JSON(http.StatusBadRequest, "failed register")
 			return c.Redirect(400, "/register")
 
