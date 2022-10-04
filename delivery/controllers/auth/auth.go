@@ -140,7 +140,7 @@ func (ac *AuthController) Register() echo.HandlerFunc {
 		// return c.Redirect(200, "/login")
 		message += " 5 success"
 
-		return c.JSON(http.StatusOK, message)
+		return c.Redirect(200, "/login")
 
 	}
 }
