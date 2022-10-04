@@ -62,8 +62,13 @@ func (ac *AuthController) Login() echo.HandlerFunc {
 func (ac *AuthController) Register() echo.HandlerFunc {
 	return func(c echo.Context) error {
 		message := "helloooooo"
+		type dataRequest struct {
+			Name     string `json:"name"`
+			Email    string `json:"email"`
+			Password string `json:"password"`
+		}
 
-		data := make(map[string]interface{})
+		var data dataRequest
 		if err := c.Bind(&data); err != nil {
 			fmt.Println(err.Error())
 
@@ -71,10 +76,11 @@ func (ac *AuthController) Register() echo.HandlerFunc {
 			return c.JSON(http.StatusOK, message)
 		}
 		json_data, err := json.Marshal(&data)
+		fmt.Println("JSON_DATA=", json_data)
 		var client = &http.Client{}
 		baseURL := ac.config.UserService.Url
 		request, err := http.NewRequest("POST", baseURL+"/register", bytes.NewBuffer(json_data))
-		fmt.Println(baseURL)
+		fmt.Println("baseURL =", baseURL)
 		if err != nil {
 			fmt.Println(err.Error())
 			message += " 2"
