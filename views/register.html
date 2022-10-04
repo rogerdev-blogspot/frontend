@@ -94,17 +94,15 @@
                         <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
                         <label for="floatingPassword">Password</label>
                     </div>
+
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
                     
                 </form>
-
-                 
-                    <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
                     <div class="text-center mt-2">
                         <p>have an account? <a href="/login">Login</a></p>
     
                     </div>
                     <p class="mt-2 mb-3 text-muted">&copy; RogerDev | 2022</p>
-                </form>
             </main>
 
         </div>
@@ -114,8 +112,9 @@
 
     <script type="text/javascript">
         // JS code here ...
-        $(function () {
-            $('form').on('submit', function (e) {
+        $(document).ready(function () {
+            var form = $("#form")
+            $(form).on('submit', function (e) {
                 console.log("form di click")
                 e.preventDefault()
 
