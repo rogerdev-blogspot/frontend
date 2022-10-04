@@ -75,7 +75,9 @@ func (ac *AuthController) Register() echo.HandlerFunc {
 			message += " 1"
 			return c.JSON(http.StatusOK, message)
 		}
+
 		json_data, err := json.Marshal(&data)
+		fmt.Println(data)
 		fmt.Println("JSON_DATA=", json_data)
 		var client = &http.Client{}
 		baseURL := ac.config.UserService.Url
