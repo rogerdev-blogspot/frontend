@@ -154,10 +154,7 @@
                         req.setRequestHeader("X-CSRF-Token", csrfToken)
                     },
                 }).then(function (res) {
-                    console.log("response didapat")
-                    console.log(res)
-
-                    alert(res)
+                    window.location.href = "/login";
                 }).catch(function (err) {
                     alert('ERROR: ' + err.responseText)
                     console.log('err', err)
