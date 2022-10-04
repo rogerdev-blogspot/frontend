@@ -83,16 +83,28 @@
                         <label for="floatingInputName">Name</label>
                     </div> -->
                     <div class="form-floating">
-                        <input type="text" name="name"  class="form-control" id="floatingInput" placeholder="Name">
+                        <input type="text" name="name"  class="form-control" id="floatingInputName" placeholder="Name">
                         <label for="floatingInput">Name</label>
                     </div>
                     <div class="form-floating">
-                        <input type="email" name="email"  class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <input type="email" name="email"  class="form-control" id="floatingInputEmail" placeholder="name@example.com">
                         <label for="floatingInput">Email address</label>
                     </div>
                     <div class="form-floating">
                         <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
                         <label for="floatingPassword">Password</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" name="address"  class="form-control" id="floatingInputAddress" placeholder="Address">
+                        <label for="floatingInput">Address</label>
+                    </div>
+                    <div class="form-floating">
+                        <select class="form-control mb-3" id="floatingInputGender" name="gender" placeholder="Gender">
+                            <option selected value="male">Male</option>
+                            <option value="female">Female</option>
+                          </select>
+                          <label for="floatingInputGender">Gender</label>
+
                     </div>
 
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
@@ -124,6 +136,8 @@
                     name: self.find('[name="name"]').val(),
                     email: self.find('[name="email"]').val(),
                     password: self.find('[name="password"]').val(),
+                    address: self.find('[name="address"]').val(),
+                    gender: self.find('select[name="status"]').val()
                 }
 
                 var url = self.attr('action')
